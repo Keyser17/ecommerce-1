@@ -21,8 +21,14 @@ import { generateMeta } from '../../../_utilities/generateMeta'
 // See the note in '../../../[slug]/page.tsx' about this
 export const dynamic = 'force-dynamic'
 
-export default async function Product({ params: { slug } }) {
-  const { isEnabled: isDraftMode } = draftMode()
+export default async function Product(props) {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode()
 
   let product: Product | null = null
 
@@ -96,8 +102,14 @@ export async function generateStaticParams() {
   }
 }
 
-export async function generateMetadata({ params: { slug } }): Promise<Metadata> {
-  const { isEnabled: isDraftMode } = draftMode()
+export async function generateMetadata(props): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    slug
+  } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode()
 
   let product: Product | null = null
 

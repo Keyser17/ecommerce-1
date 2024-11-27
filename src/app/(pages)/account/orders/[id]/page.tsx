@@ -13,7 +13,13 @@ import { mergeOpenGraph } from '../../../../_utilities/mergeOpenGraph'
 
 import classes from './index.module.scss'
 
-export default async function Order({ params: { id } }) {
+export default async function Order(props) {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
       'You must be logged in to view this order.',
@@ -120,7 +126,13 @@ export default async function Order({ params: { id } }) {
   )
 }
 
-export async function generateMetadata({ params: { id } }): Promise<Metadata> {
+export async function generateMetadata(props): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   return {
     title: `Order ${id}`,
     description: `Order details for order ${id}.`,

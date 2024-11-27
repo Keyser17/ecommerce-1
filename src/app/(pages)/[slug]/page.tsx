@@ -29,8 +29,14 @@ import __CategoriesCardAstro from '../../_components/__CategoriesCardAstro'
 
 import classes from './index.module.scss'
 
-export default async function Page({ params: { slug = 'home' } }) {
-  const { isEnabled: isDraftMode } = draftMode()
+export default async function Page(props) {
+  const params = await props.params;
+
+  const {
+    slug = 'home'
+  } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode()
 
   let page: Page | null = null
   let categories: Category[] | null = null
@@ -99,8 +105,14 @@ export async function generateStaticParams() {
   }
 }
 
-export async function generateMetadata({ params: { slug = 'home' } }): Promise<Metadata> {
-  const { isEnabled: isDraftMode } = draftMode()
+export async function generateMetadata(props): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    slug = 'home'
+  } = params;
+
+  const { isEnabled: isDraftMode } = await draftMode()
 
   let page: Page | null = null
 
