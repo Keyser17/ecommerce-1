@@ -16,18 +16,21 @@ export default async function Purchases() {
   })
 
   return (
-    <div>
+    (<div>
       <h5>Purchased Products</h5>
       <div>
         {user?.purchases?.length || 0 > 0 ? (
           <ul className={classes.purchases}>
             {user?.purchases?.map((purchase, index) => {
               return (
-                <li key={index} className={classes.purchase}>
+                (<li key={index} className={classes.purchase}>
                   {typeof purchase === 'string' ? (
                     <p>{purchase} Test</p>
                   ) : (
-                    <Link href={`/products/${purchase.slug}`} className={classes.item}>
+                    <Link
+                      href={`/products/${purchase.slug}`}
+                      className={classes.item}
+                      legacyBehavior>
                       <div className={classes.mediaWrapper}>
                         {!purchase.meta.image && (
                           <div className={classes.placeholder}>No image</div>
@@ -45,14 +48,14 @@ export default async function Purchases() {
                       </div>
                     </Link>
                   )}
-                </li>
-              )
+                </li>)
+              );
             })}
           </ul>
         ) : (
           <div className={classes.noPurchases}>You have no purchases.</div>
         )}
       </div>
-    </div>
-  )
+    </div>)
+  );
 }

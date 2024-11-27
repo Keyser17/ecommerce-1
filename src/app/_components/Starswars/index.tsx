@@ -62,21 +62,19 @@ export const Starswars: React.FC = () => {
 
   return (
     // PURPLE
-    
-    <div className={classes.wrapper} >
+
+    (<div className={classes.wrapper} >
       {/* VERT */}
       <button onClick={goToPrevious} className={classes.prev}>
             <span className={classes.icon}>
             <FontAwesomeIcon icon={faArrowLeft} />
             </span>
           </button>
-          
-          <button onClick={goToNext} className={classes.next}>
-            <span className={classes.icon}>
-            <FontAwesomeIcon icon={faArrowRight} />
-            </span>
-          </button>
-
+      <button onClick={goToNext} className={classes.next}>
+        <span className={classes.icon}>
+        <FontAwesomeIcon icon={faArrowRight} />
+        </span>
+      </button>
       <div className={classes.content}> 
         <div className={classes['bg-shape']}>
           {/* <Image
@@ -134,7 +132,7 @@ export const Starswars: React.FC = () => {
                   {/* Vérifie si options est un objet ou un tableau */}
                   {Array.isArray(currentSlide.options) ? (
                     // Si options est un tableau, on parcourt chaque option pour afficher son titre et ses choix
-                    currentSlide.options.map((option, index) => (
+                    (currentSlide.options.map((option, index) => (
                       <div key={index} className={classes['product-labels']}>
                         <div className={classes['product-labels__title']}>{option.title}</div>
                         <div className={classes['product-labels__group']}>
@@ -151,7 +149,7 @@ export const Starswars: React.FC = () => {
                           ))}
                         </div>
                       </div>
-                    ))
+                    )))
                   ) : (
                 
                     
@@ -230,7 +228,7 @@ export const Starswars: React.FC = () => {
         </div>
         </div>
       </div>
-    </div>
+    </div>)
   );
 }
 

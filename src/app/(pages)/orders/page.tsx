@@ -47,7 +47,7 @@ export default async function Orders() {
   }
 
   return (
-    <Gutter className={classes.orders}>
+    (<Gutter className={classes.orders}>
       <h1>Orders</h1>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
         <p className={classes.noOrders}>You have no orders.</p>
@@ -57,7 +57,7 @@ export default async function Orders() {
         <ul className={classes.ordersList}>
           {orders?.map((order, index) => (
             <li key={order.id} className={classes.listItem}>
-              <Link className={classes.item} href={`/orders/${order.id}`}>
+              <Link className={classes.item} href={`/orders/${order.id}`} legacyBehavior>
                 <div className={classes.itemContent}>
                   <h4 className={classes.itemTitle}>{`Order ${order.id}`}</h4>
                   <div className={classes.itemMeta}>
@@ -85,8 +85,8 @@ export default async function Orders() {
       )}
       <HR />
       <Button href="/account" appearance="primary" label="Go to account" />
-    </Gutter>
-  )
+    </Gutter>)
+  );
 }
 
 export const metadata: Metadata = {

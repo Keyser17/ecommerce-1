@@ -17,14 +17,14 @@ const HeaderComponent = ({ header }: { header: Header }) => {
   const pathname = usePathname()
 
   return (
-    <nav
+    (<nav
       className={[classes.header, noHeaderFooterUrls.includes(pathname) && classes.hide]
         .filter(Boolean)
         .join(' ')}
     >
       <Gutter className={classes.wrap}>
         
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <Image src="/logo-black.jpg" alt="logo" width={250} height={50} />
         </Link>
         
@@ -32,8 +32,8 @@ const HeaderComponent = ({ header }: { header: Header }) => {
         <SlideBar />
         {/* <HeaderNav header={header} /> */}
       </Gutter>
-    </nav>
-  )
+    </nav>)
+  );
 }
 
 export default HeaderComponent

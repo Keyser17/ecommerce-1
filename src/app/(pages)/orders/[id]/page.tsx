@@ -52,7 +52,7 @@ export default async function Order(props) {
   }
 
   return (
-    <Gutter className={classes.orders}>
+    (<Gutter className={classes.orders}>
       <h1>
         {`Order`}
         <span className={classes.id}>{`${order.id}`}</span>
@@ -85,9 +85,12 @@ export default async function Order(props) {
             const metaImage = meta?.image
 
             return (
-              <Fragment key={index}>
+              (<Fragment key={index}>
                 <div className={classes.row}>
-                  <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className={classes.mediaWrapper}
+                    legacyBehavior>
                     {!metaImage && <span className={classes.placeholder}>No image</span>}
                     {metaImage && typeof metaImage !== 'string' && (
                       <Media
@@ -111,7 +114,10 @@ export default async function Order(props) {
                       </p>
                     )}
                     <h5 className={classes.title}>
-                      <Link href={`/products/${product.slug}`} className={classes.titleLink}>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className={classes.titleLink}
+                        legacyBehavior>
                         {title}
                       </Link>
                     </h5>
@@ -120,8 +126,8 @@ export default async function Order(props) {
                   </div>
                 </div>
                 {!isLast && <HR />}
-              </Fragment>
-            )
+              </Fragment>)
+            );
           }
 
           return null
@@ -132,8 +138,8 @@ export default async function Order(props) {
         <Button href="/orders" appearance="primary" label="See all orders" />
         <Button href="/account" appearance="secondary" label="Go to account" />
       </div>
-    </Gutter>
-  )
+    </Gutter>)
+  );
 }
 
 export async function generateMetadata(props): Promise<Metadata> {

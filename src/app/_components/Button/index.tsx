@@ -56,10 +56,15 @@ export const Button: React.FC<Props> = ({
 
   if (el === 'link') {
     return (
-      <Link href={href || ''} className={className} {...newTabProps} onClick={onClick}>
+      (<Link
+        href={href || ''}
+        className={className}
+        {...newTabProps}
+        onClick={onClick}
+        legacyBehavior>
         {content}
-      </Link>
-    )
+      </Link>)
+    );
   }
 
   const Element: ElementType = el

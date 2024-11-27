@@ -79,18 +79,16 @@ export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
   };
 
   return (
-    <Menu styles={styles} right>
-      <Link href="/">
+    (<Menu styles={styles} right>
+      <Link href="/" legacyBehavior>
         <Image src="/logo-black.jpg" alt="logo" width={250} height={50} />
       </Link>
       <CarouselSideBar />
-
       {/* Liens du menu burger */}
       <a id="home" className="menu-item" href="/">Home</a>
       <a id="about" className="menu-item" href="/about">About</a>
       <a id="contact" className="menu-item" href="/contact">Contact</a>
       <a onClick={showSettings} className="menu-item--small" href="">Settings</a>
-
       {/* Navigation existante */}
       <nav className={["menu-item", user === undefined && classes.hide].filter(Boolean).join(' ')}>
         {navItems.map(({ link }, i) => (
@@ -109,7 +107,7 @@ export const SlideBar: React.FC<{ header: HeaderType }> = ({ header }) => {
         )}
         {user && <CartLink />}
       </nav>
-    </Menu>
+    </Menu>)
   );
 };
 

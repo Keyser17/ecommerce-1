@@ -42,7 +42,7 @@ export default async function Orders() {
   }
 
   return (
-    <div>
+    (<div>
       <h5>My Orders</h5>
       {(!orders || !Array.isArray(orders) || orders?.length === 0) && (
         <p className={classes.noOrders}>You have no orders.</p>
@@ -52,7 +52,10 @@ export default async function Orders() {
         <ul className={classes.orders}>
           {orders?.map(order => (
             <li key={order.id} className={classes.order}>
-              <Link className={classes.item} href={`/account/orders/${order.id}`}>
+              <Link
+                className={classes.item}
+                href={`/account/orders/${order.id}`}
+                legacyBehavior>
                 <div className={classes.itemContent}>
                   <h6 className={classes.itemTitle}>{`Order ${order.id}`}</h6>
                   <div className={classes.itemMeta}>
@@ -80,8 +83,8 @@ export default async function Orders() {
           ))}
         </ul>
       )}
-    </div>
-  )
+    </div>)
+  );
 }
 
 export const metadata: Metadata = {

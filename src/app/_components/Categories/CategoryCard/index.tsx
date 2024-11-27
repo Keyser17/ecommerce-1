@@ -16,14 +16,15 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   const { setCategoryFilters } = useFilter()
 
   return (
-      <Link
-        href="/products"
+    <Link href="/products" legacyBehavior>
+      <a
         className={classes.card}
         style={{ backgroundImage: `url(${media.url})` }}
         onClick={() => setCategoryFilters([category.id])}
       >
         <p className={classes.title}>{category.title}</p>
-      </Link>
+      </a>
+    </Link>
   )
 }
 

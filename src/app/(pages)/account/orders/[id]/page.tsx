@@ -50,7 +50,7 @@ export default async function Order(props) {
   }
 
   return (
-    <div>
+    (<div>
       <h5>
         {`Order`}
         <span className={classes.id}>{` ${order.id}`}</span>
@@ -67,7 +67,6 @@ export default async function Order(props) {
           }).format(order.total / 100)}
         </p>
       </div>
-
       <div className={classes.order}>
         {order.items?.map((item, index) => {
           if (typeof item.product === 'object') {
@@ -80,9 +79,12 @@ export default async function Order(props) {
             const metaImage = meta?.image
 
             return (
-              <Fragment key={index}>
+              (<Fragment key={index}>
                 <div className={classes.row}>
-                  <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className={classes.mediaWrapper}
+                    legacyBehavior>
                     {!metaImage && <span className={classes.placeholder}>No image</span>}
                     {metaImage && typeof metaImage !== 'string' && (
                       <Media
@@ -106,7 +108,10 @@ export default async function Order(props) {
                       </p>
                     )}
                     <h6 className={classes.title}>
-                      <Link href={`/products/${product.slug}`} className={classes.titleLink}>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className={classes.titleLink}
+                        legacyBehavior>
                         {title}
                       </Link>
                     </h6>
@@ -114,16 +119,16 @@ export default async function Order(props) {
                     <Price product={product} button={false} quantity={quantity} />
                   </div>
                 </div>
-              </Fragment>
-            )
+              </Fragment>)
+            );
           }
 
           return null
         })}
       </div>
       <HR className={classes.hr} />
-    </div>
-  )
+    </div>)
+  );
 }
 
 export async function generateMetadata(props): Promise<Metadata> {

@@ -25,7 +25,7 @@ export const Input: React.FC<Props> = ({
   disabled,
 }) => {
   return (
-    <div className={classes.inputWrap}>
+    (<div className={classes.inputWrap}>
       <label htmlFor="name" className={classes.label}>
         {label}
         {required ? <span className={classes.asterisk}>&nbsp;*</span> : ''}
@@ -54,6 +54,6 @@ export const Input: React.FC<Props> = ({
             : error?.message}
         </div>
       )}
-    </div>
-  )
+    </div>)
+  );
 }

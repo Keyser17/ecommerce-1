@@ -12,9 +12,9 @@ import classes from './index.module.scss'
 
 export default async function RecoverPassword() {
   return (
-    <section className={classes.recoverPassword}>
+    (<section className={classes.recoverPassword}>
       <div className={classes.heroImg}>
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <Image
             src="/logo-black.svg"
             alt="logo"
@@ -24,12 +24,11 @@ export default async function RecoverPassword() {
           />
         </Link>
       </div>
-
       <div className={classes.formWrapper}>
         <div className={classes.formContainer}>
           <RenderParams className={classes.params} />
 
-          <Link href="/login" className={classes.backLink}>
+          <Link href="/login" className={classes.backLink} legacyBehavior>
             <Image src="/assets/icons/arrow-left.svg" alt="left arrow" width={24} height={24} />
             <p>Back</p>
           </Link>
@@ -39,8 +38,8 @@ export default async function RecoverPassword() {
           <RecoverPasswordForm />
         </div>
       </div>
-    </section>
-  )
+    </section>)
+  );
 }
 
 export const metadata: Metadata = {
