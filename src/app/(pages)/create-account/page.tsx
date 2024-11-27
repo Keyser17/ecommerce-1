@@ -19,9 +19,9 @@ export default async function CreateAccount() {
   })
 
   return (
-    <section className={classes.createAccount}>
+    (<section className={classes.createAccount}>
       <div className={classes.heroImg}>
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <Image
             src="/logo-black.svg"
             alt="logo"
@@ -31,7 +31,6 @@ export default async function CreateAccount() {
           />
         </Link>
       </div>
-
       <div className={classes.formWrapper}>
         <div className={classes.formContainer}>
           <RenderParams className={classes.params} />
@@ -46,8 +45,8 @@ export default async function CreateAccount() {
           <CreateAccountForm />
         </div>
       </div>
-    </section>
-  )
+    </section>)
+  );
 }
 
 export const metadata: Metadata = {

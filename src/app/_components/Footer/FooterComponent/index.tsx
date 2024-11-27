@@ -17,7 +17,7 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
   const navItems = footer?.navItems || []
 
   return (
-    <footer className={noHeaderFooterUrls.includes(pathname) ? classes.hide : ''}>
+    (<footer className={noHeaderFooterUrls.includes(pathname) ? classes.hide : ''}>
       <Gutter>
         <ul className={classes.inclusions}>
           {inclusions.map(inclusion => (
@@ -36,11 +36,10 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
           ))}
         </ul>
       </Gutter>
-
       <div className={classes.footer}>
         <Gutter>
           <div className={classes.wrap}>
-            <Link href="/">
+            <Link href="/" legacyBehavior>
               <Image src="/logo-black.jpg" alt="logo" width={400} height={100} />
             </Link>
 
@@ -72,8 +71,8 @@ const FooterComponent = ({ footer }: { footer: Footer }) => {
           </div>
         </Gutter>
       </div>
-    </footer>
-  )
+    </footer>)
+  );
 }
 
 export default FooterComponent

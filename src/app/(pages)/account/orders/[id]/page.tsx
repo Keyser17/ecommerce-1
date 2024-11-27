@@ -13,7 +13,13 @@ import { mergeOpenGraph } from '../../../../_utilities/mergeOpenGraph'
 
 import classes from './index.module.scss'
 
-export default async function Order({ params: { id } }) {
+export default async function Order(props) {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   const { token } = await getMeUser({
     nullUserRedirect: `/login?error=${encodeURIComponent(
       'You must be logged in to view this order.',
@@ -44,7 +50,7 @@ export default async function Order({ params: { id } }) {
   }
 
   return (
-    <div>
+    (<div>
       <h5>
         {`Order`}
         <span className={classes.id}>{` ${order.id}`}</span>
@@ -61,7 +67,6 @@ export default async function Order({ params: { id } }) {
           }).format(order.total / 100)}
         </p>
       </div>
-
       <div className={classes.order}>
         {order.items?.map((item, index) => {
           if (typeof item.product === 'object') {
@@ -74,9 +79,12 @@ export default async function Order({ params: { id } }) {
             const metaImage = meta?.image
 
             return (
-              <Fragment key={index}>
+              (<Fragment key={index}>
                 <div className={classes.row}>
-                  <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
+                  <Link
+                    href={`/products/${product.slug}`}
+                    className={classes.mediaWrapper}
+                    legacyBehavior>
                     {!metaImage && <span className={classes.placeholder}>No image</span>}
                     {metaImage && typeof metaImage !== 'string' && (
                       <Media
@@ -100,7 +108,10 @@ export default async function Order({ params: { id } }) {
                       </p>
                     )}
                     <h6 className={classes.title}>
-                      <Link href={`/products/${product.slug}`} className={classes.titleLink}>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className={classes.titleLink}
+                        legacyBehavior>
                         {title}
                       </Link>
                     </h6>
@@ -108,19 +119,25 @@ export default async function Order({ params: { id } }) {
                     <Price product={product} button={false} quantity={quantity} />
                   </div>
                 </div>
-              </Fragment>
-            )
+              </Fragment>)
+            );
           }
 
           return null
         })}
       </div>
       <HR className={classes.hr} />
-    </div>
-  )
+    </div>)
+  );
 }
 
-export async function generateMetadata({ params: { id } }): Promise<Metadata> {
+export async function generateMetadata(props): Promise<Metadata> {
+  const params = await props.params;
+
+  const {
+    id
+  } = params;
+
   return {
     title: `Order ${id}`,
     description: `Order details for order ${id}.`,

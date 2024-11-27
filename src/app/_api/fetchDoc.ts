@@ -35,7 +35,8 @@ export const fetchDoc = async <T>(args: {
   let token: RequestCookie | undefined
 
   if (draft) {
-    const { cookies } = await import('next/headers')
+    const { cookies } = await /* @next-codemod-error The APIs under 'next/headers' are async now, need to be manually awaited. */
+    import('next/headers')
     token = cookies().get(payloadToken)
   }
 

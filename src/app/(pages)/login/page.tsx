@@ -17,9 +17,9 @@ export default async function Login() {
   })
 
   return (
-    <section className={classes.login}>
+    (<section className={classes.login}>
       <div className={classes.heroImg}>
-        <Link href="/">
+        <Link href="/" legacyBehavior>
           <Image
             src="/logo-black.svg"
             alt="logo"
@@ -29,7 +29,6 @@ export default async function Login() {
           />
         </Link>
       </div>
-
       <div className={classes.formWrapper}>
         <div className={classes.formContainer}>
           <RenderParams className={classes.params} />
@@ -44,8 +43,8 @@ export default async function Login() {
           <LoginForm />
         </div>
       </div>
-    </section>
-  )
+    </section>)
+  );
 }
 
 export const metadata: Metadata = {

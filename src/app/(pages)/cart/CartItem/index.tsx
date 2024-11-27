@@ -35,14 +35,16 @@ const CartItem = ({ product, title, metaImage, qty, addItemToCart }) => {
   }
 
   return (
-    <li className={classes.item} key={title}>
-      <Link href={`/products/${product.slug}`} className={classes.mediaWrapper}>
+    (<li className={classes.item} key={title}>
+      <Link
+        href={`/products/${product.slug}`}
+        className={classes.mediaWrapper}
+        legacyBehavior>
         {!metaImage && <span>No image</span>}
         {metaImage && typeof metaImage !== 'string' && (
           <Media className={classes.media} imgClassName={classes.image} resource={metaImage} fill />
         )}
       </Link>
-
       <div className={classes.itemDetails}>
         <div className={classes.titleWrapper}>
           <h6>{title}</h6>
@@ -78,13 +80,12 @@ const CartItem = ({ product, title, metaImage, qty, addItemToCart }) => {
           </div>
         </div>
       </div>
-
       <div className={classes.subtotalWrapper}>
         <Price product={product} button={false} quantity={quantity} />
         <RemoveFromCartButton product={product} />
       </div>
-    </li>
-  )
+    </li>)
+  );
 }
 
 export default CartItem
