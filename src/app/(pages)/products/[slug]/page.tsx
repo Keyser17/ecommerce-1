@@ -46,18 +46,9 @@ export default async function Product({ params: { slug } }) {
     <>
       <Script src="../../../_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js" strategy="beforeInteractive" />
       <ProductOverview  
-          colors={data.products[0].colors}
-          images={data.products[0].images}
-          title={data.products[0].title}
-          full_description={data.products[0].full_description}
-          price={data.products[0].price}
-          highlights={data.products[0].highlights}
-          details={data.products[0].details}
-          rating={data.products[0].rating}
-          reviews={data.products[0].reviews}
-          sizes={data.products[0].sizes}
-          data={data.products[1].data} 
-        />
+          product={product}
+        /> 
+
 
 
       {/* <ProductHero product={product} /> */}
