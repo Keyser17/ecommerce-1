@@ -8,6 +8,8 @@ import ProductSizes from '../../_components/_ProductSizeAstro/productSizes';
 import ProductAccordion from '../../_components/_ProductAccordionAstro';
 import { Reviews } from '../../_components/_Vercelreviewstshirt/reviews';
 import { Media } from '../../_components/Media';
+import { Price } from '../../_components/Price'
+
 
 import data from '../../../assets/dataAstro-ecommerce.json';
 
@@ -24,7 +26,6 @@ export default function ProductOverview({ product }: { product: Product }) {
   const colors = jsonData.colors || [];
   const images = jsonData.images || [];
   const full_description = jsonData.full_description || description || '';
-  const price = jsonData.price || 0;
   const highlights = jsonData.highlights || [];
   const details = jsonData.details || '';
   const rating = jsonData.rating || 0;
@@ -45,11 +46,13 @@ export default function ProductOverview({ product }: { product: Product }) {
 
           <form action="" method="post">
             {/* Prix */}
-            {price > 0 && (
-              <div className="d-flex">
-                <h3 className="font-weight-normal">${price.toLocaleString()}</h3>
-              </div>
-            )}
+            {console.log(product)}
+            
+                
+              <Price product={product} button={false} />
+                
+              
+          
 
             {/* Évaluation */}
             {rating > 0 && (
