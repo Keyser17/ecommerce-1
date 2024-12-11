@@ -9,6 +9,12 @@ import { fetchDocs } from '../../../_api/fetchDocs'
 import { Blocks } from '../../../_components/Blocks'
 import { PaywallBlocks } from '../../../_components/PaywallBlocks'
 import { ProductHero } from '../../../_heros/Product'
+
+import ProductOverview  from '../../../_heros/_ProductOverviewGridAstro'
+import data from '../../../../assets/dataAstro-ecommerce.json'
+import Script from 'next/script';
+
+
 import { generateMeta } from '../../../_utilities/generateMeta'
 
 // Force this page to be dynamic so that Next.js does not cache it
@@ -38,7 +44,14 @@ export default async function Product({ params: { slug } }) {
 
   return (
     <>
-      <ProductHero product={product} />
+      <Script src="../../../_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js" strategy="beforeInteractive" />
+      <ProductOverview  
+          product={product}
+        /> 
+
+
+
+      {/* <ProductHero product={product} /> */}
       {product?.enablePaywall && <PaywallBlocks productSlug={slug as string} disableTopPadding />}
       <Blocks
         disableTopPadding

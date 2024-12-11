@@ -62,8 +62,9 @@ export const Price: React.FC<{
   return (
     <div className={classes.actions}>
       {typeof price?.actualPrice !== 'undefined' && price?.withQuantity !== '' && (
-        <div className={classes.price}>
-          <p>{price?.withQuantity}</p>
+        <div className="d-flex">
+          
+          <h3 className="font-weight-normal">{price?.withQuantity}</h3>
         </div>
       )}
     </div>
