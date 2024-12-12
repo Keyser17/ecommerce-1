@@ -8,6 +8,7 @@ import { Header } from './_components/Header'
 import { Providers } from './_providers'
 import { InitTheme } from './_providers/Theme/InitTheme'
 import { mergeOpenGraph } from './_utilities/mergeOpenGraph'
+import Script from 'next/script';
 
 import './_css/app.scss'
 import './_css/globals.css'
@@ -27,10 +28,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <InitTheme />
         <link rel="icon" href="/favicon.ico" sizes="32x32" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <script>
-          import "./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
-          
-      </script>
+        <Script
+        src="./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
+        strategy="afterInteractive"
+        
+        />
       </head>
       <body className={jost.variable}>
         <Providers>
@@ -41,10 +43,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           {/* @ts-expect-error */}
           <Footer />
         </Providers>
-        <script>
-          import "./_components/__CategoriesCardAstro/assets/js/astro-ecommerce.js"
-          
-      </script>
       </body>
     </html>
   )

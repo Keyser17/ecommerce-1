@@ -35,9 +35,11 @@ interface Props {
               <div className="d-block mt-10">
                 <p className="text-black font-weight-bold mb-1">{collection}</p>
                 <h4 className="text-black font-weight-bolder">{title}</h4>
-                {/* {(cta != null) &&  */}
-                  <a href="#" className="text-white text-sm font-weight-semibold mb-0">See products &#62;</a>  
-                {/* } */}
+                {cta && (
+                <a href="#" className="text-white text-sm font-weight-semibold mb-0">
+                  See products &#62;
+                </a>
+              )}
               </div>
             </div>
           </div>
